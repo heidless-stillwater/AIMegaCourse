@@ -1,0 +1,76 @@
+2024-11-18 16:34:35 INFO     --------
+2024-11-18 16:34:35 INFO     Starting support_vector_machine
+2024-11-18 16:44:31 INFO     --------
+2024-11-18 16:44:31 INFO     Starting support_vector_machine
+2024-11-18 16:46:26 INFO     --------
+2024-11-18 16:46:26 INFO     Starting support_vector_machine
+2024-11-18 16:47:14 INFO     --------
+2024-11-18 16:47:14 INFO     Starting support_vector_machine
+2024-11-18 16:48:49 INFO     --------
+2024-11-18 16:48:49 INFO     Starting support_vector_machine
+2024-11-18 16:51:05 INFO     --------
+2024-11-18 16:51:05 INFO     Starting support_vector_machine
+2024-11-18 16:51:30 INFO     --------
+2024-11-18 16:51:30 INFO     Starting support_vector_machine
+2024-11-18 16:56:08 INFO     --------
+2024-11-18 16:56:08 INFO     Starting support_vector_machine
+2024-11-18 17:02:14 INFO     --------
+2024-11-18 17:02:14 INFO     Starting support_vector_machine
+2024-11-18 17:03:02 INFO     --------
+2024-11-18 17:03:02 INFO     Starting support_vector_machine
+2024-11-18 17:03:56 INFO     --------
+2024-11-18 17:03:56 INFO     Starting support_vector_machine
+2024-11-18 17:04:12 INFO     --------
+2024-11-18 17:04:12 INFO     Starting support_vector_machine
+2024-11-18 17:05:46 INFO     --------
+2024-11-18 17:05:46 INFO     Starting support_vector_machine
+2024-11-18 17:06:47 INFO     --------
+2024-11-18 17:06:47 INFO     Starting support_vector_machine
+2024-11-18 17:08:38 INFO     --------
+2024-11-18 17:08:38 INFO     Starting support_vector_machine
+2024-11-18 17:10:34 INFO     --------
+2024-11-18 17:10:34 INFO     Starting support_vector_machine
+2024-11-18 17:11:18 INFO     --------
+2024-11-18 17:11:18 INFO     Starting support_vector_machine
+2024-11-18 17:11:36 INFO     --------
+2024-11-18 17:11:36 INFO     Starting support_vector_machine
+2024-11-18 17:11:52 INFO     --------
+2024-11-18 17:11:52 INFO     Starting support_vector_machine
+2024-11-18 17:12:23 INFO     --------
+2024-11-18 17:12:23 INFO     Starting support_vector_machine
+2024-11-18 17:13:40 INFO     --------
+2024-11-18 17:13:40 INFO     Starting support_vector_machine
+2024-11-18 17:13:45 INFO     --------
+2024-11-18 17:13:45 INFO     Starting support_vector_machine
+2024-11-18 17:14:03 INFO     --------
+2024-11-18 17:14:03 INFO     Starting support_vector_machine
+2024-11-18 17:14:39 INFO     --------
+2024-11-18 17:14:39 INFO     Starting support_vector_machine
+2024-11-18 17:15:45 INFO     --------
+2024-11-18 17:15:45 INFO     Starting support_vector_machine
+2024-11-18 17:16:33 INFO     --------
+2024-11-18 17:16:33 INFO     Starting support_vector_machine
+2024-11-18 18:19:08 INFO     --------
+2024-11-18 18:19:08 INFO     Starting support_vector_machine
+2024-11-18 18:19:30 INFO     --------
+2024-11-18 18:19:30 INFO     Starting support_vector_machine
+2024-11-18 18:22:56 INFO     --------
+2024-11-18 18:22:56 INFO     Starting support_vector_machine
+2024-11-18 18:30:23 INFO     --------
+2024-11-18 18:30:23 INFO     Starting support_vector_machine
+2024-11-18 18:32:22 INFO     --------
+2024-11-18 18:32:22 INFO     Starting support_vector_machine
+2024-11-18 18:36:53 INFO     --------
+2024-11-18 18:36:53 INFO     Starting support_vector_machine
+2024-11-18 18:38:22 INFO     --------
+2024-11-18 18:38:22 INFO     Starting support_vector_machine
+2024-11-18 18:38:22 INFO     t_names: : ['malignant' 'benign']
+2024-11-18 18:38:50 INFO     --------
+2024-11-18 18:38:50 INFO     Starting support_vector_machine
+2024-11-18 18:38:50 INFO     t_names: : ['malignant' 'benign']
+2024-11-18 18:39:20 INFO     --------
+2024-11-18 18:39:20 INFO     Starting support_vector_machine
+2024-11-18 18:39:20 INFO     t_names: : ['malignant' 'benign']
+2024-11-18 18:39:27 INFO     --------
+2024-11-18 18:39:27 INFO     Starting support_vector_machine
+2024-11-18 18:39:27 INFO     t_names: : ['malignant' 'benign']
