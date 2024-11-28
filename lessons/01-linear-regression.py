@@ -14,6 +14,8 @@ from icecream import ic
 
 # configure logging
 import logging
+
+import streamlit as st
     
 path_name = os.path.basename(__file__)
 # print(f"path_name: {path_name}")
@@ -40,6 +42,22 @@ def log_this(arr, msg):
 def regression_test():
     logger.info('Starting Regression Test') 
     
+    # @st.fragment()
+    # def filter_and_file():
+    #     new_cols = st.columns(5)
+    #     new_cols[0].checkbox("Filter")
+    #     new_cols[1].file_uploader("Upload image")
+    #     new_cols[2].selectbox("Choose option: ", ["Option 1", "Option 2", "Option 3"])
+    #     new_cols[3].slider("Select value", 0, 100, 50)
+    #     new_cols[4].text_input("Enter text")
+    
+    cols = st.columns(3)
+    cols[0].selectbox("Select", [1,2,3], None)
+    cols[1].text_input("Enter text")
+    cols[2].button("Update")
+    # filter_and_file()
+
+
     # logger.info('loading data')
     data = pd.read_csv("data/student_mat_2173a47420.csv", sep=";")
     # print(data.head())
@@ -84,11 +102,25 @@ def regression_test():
     acc = linear.score(x_test, y_test)
     logger.info(f"acc: {acc}")
 
+    st.subheader('score')
+
+    st.write(f"{acc}")
+
     # log_this(linear.coef_, "Co: ")
     # log_this(linear.intercept_, "Intercept: ")
 
     predictions = linear.predict(x_test)
     log_this(predictions, "\npredictions")
+
+        
+    ### 3. Display DataFrame
+    st.subheader('predictions')
+    df = pd.DataFrame(X)
+    df = df.rename({0: 'count'}, axis='columns')
+    df.reset_index(inplace=True)
+    df = df.rename(columns = {'index':'nucleotide'})
+    st.write(df)
+
     
     # for x in range(len(predictions)):
     #   logger.info(f"predictions: {predictions[x]} | x_test[x]: {x_test[x]} | y_test[x]: {y_test[x]}") 
@@ -100,13 +132,12 @@ def regression_test():
     pyplot.ylabel("final grade")
     pyplot.show()
   
-
-
 def main():
     logger.info('--------') 
     # logger.info('Calling Regression Test')
+    st.header("Linear Regression")
     regression_test()
-    
+  
 if __name__ == '__main__':
     main()
 
