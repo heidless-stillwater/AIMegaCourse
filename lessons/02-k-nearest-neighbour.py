@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
+import streamlit as st 
 
 import sklearn
 from sklearn.utils import shuffle
@@ -13,6 +14,7 @@ from matplotlib import style
 
 from icecream import ic
 
+
 # configure logging
 import logging
     
@@ -20,7 +22,7 @@ path_name = os.path.basename(__file__)
 # print(f"path_name: {path_name}")
 
 file_root = os.path.splitext(path_name)[0]
-print(f"file_root: {file_root}")
+# print(f"file_root: {file_root}")
 
 # configure logging
 logger = logging.getLogger(__name__)
@@ -103,44 +105,74 @@ def regression_test():
 def get_var_name(var):
     for name, value in locals().items():
         logger.info(f"var: {var}")
+        st.write(f"var: {var}")
         if value is var:
             return name
           
 def k_nearest_neighbour():
     logger.info('Starting k-nearest-neightbour') 
+    st.header("k_nearest_neighbour")
+
+    st.write(""" 
+        
+    $$
+    Euclidean\ Distance
+    $$
+                
+    $$
+    m = d = \sqrt{(X_2-X_1)^2 + (y_2 - y_1)^2}
+    $$
+             
+    ***
+            
+    """)
     
+    #########
+    # SIDEBAR
+    #
+    # Sidebar - Prediction selection
+    attribute_lst = ["class", "lug_boot", "safety", "persons", "door", "maint", "buying"]
+    attribute_select = st.sidebar.selectbox('SelectBox', attribute_lst, None)
+    attribute_multiselect = st.sidebar.multiselect('Multiselect', attribute_lst, attribute_lst)
+    st.subheader("attribute: selected")
+    st.write(attribute_select)
+
+    # if attribute_select:
+    #     st.write(f"SET")
+    # else:
+    #     st.write("NOT SET")
+
+    ######
+    # MAIN
     data = pd.read_csv(("data/CarDataSet/car.data"))
-    # logger.info(f"\n{data.head()}")
+    st.subheader("raw data")
+    st.write(data.head(3))
     
-    cls_list = data["class"]
-    log_this(cls_list, "cls_list")
-    logger.info(f"uniq: {set(cls_list)}")
-    
+    # cls_list = data["class"]
+    # log_this(cls_list, "cls_list")
+
     # Get column names
-    # col_names = data.columns
-    # log_this(col_names, "col_names")
+    col_names = data.columns
+    log_this(col_names, "col_names")
+    st.write(f"col_names: {col_names}")
 
     # encode text labels into integer values
     le = preprocessing.LabelEncoder()
-   
-    # for attribute in col_names:
-    #   # log_this(attribute, f"TSTER: {attribute}")
 
-    #   attr_name = f"{attribute}"
-    #   log_this(attr_name, f"attr_name")
-
-    #   attr_lst = le.fit_transform(list(data[attribute]))
-      
-    #   logger.info(f"\nlst: {attribute} | uniq: {set(attr_lst)} | lst: {attr_lst}")
-      
     buying = le.fit_transform(list(data["buying"]))
     # log_this(buying, "buying")
+    # st.subheader("buying")
+    # st.write(f"buying: {buying}")
     
     maint = le.fit_transform(list(data["maint"]))
     # log_this(maint, "maint")
+    # st.subheader("maint")
+    # st.write(f"maint: {maint}")
 
     door = le.fit_transform(list(data["door"]))
     # log_this(door, "door")
+    # st.subheader("door")
+    # st.write(f"door: {door}")
 
     persons = le.fit_transform(list(data["persons"]))
     # log_this(persons, "persons")
@@ -154,8 +186,12 @@ def k_nearest_neighbour():
     cls = le.fit_transform(list(data["class"]))
     # log_this(cls, "class")
     
-    predict = "class"
-    
+
+    # predict = "class"
+    predict = attribute_select
+    st.subheader("features")
+    st.write(f"predict: {predict}")
+
     # features
     X = list(zip(buying, maint, door, persons, lug_boot, safety, cls))
     # log_this(X, "X")
@@ -163,7 +199,7 @@ def k_nearest_neighbour():
     # labels
     y = list(cls)
     # log_this(y, "y")
-    
+
     x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, y, test_size = 0.1)
 
     model = KNeighborsClassifier(n_neighbors=5)
@@ -171,19 +207,46 @@ def k_nearest_neighbour():
     model.fit(x_train, y_train)
     acc = model.score(x_test, y_test)
     # log_this(acc, "acc: ")
+    st.write(f"accuracy: {acc}")
     
     # get unique values
     # cls_list = data["class"]
     names = list(set(data["class"]))
     # logger.info(f"names: {names}")
+    st.write(f"names: {names}")
 
-    predicted = model.predict(x_test)    
+
+    sample_data = x_test[0]
+    st.write(f"sample_data: {sample_data}")
+
+    # x = []
+    # sample_vals=np.array(x)
+    
+    # st.subheader(type(sample_vals))
+
+    # for el in sample_data:
+    #   sample_vals.append(el)
+    #   st.write("el: ", el, "sample_vals: ", sample_vals)
+
+
+
+
+
+    predicted = model.predict(x_test) 
+    st.write(f"predicted: {predicted}")   
 
     for x in range(len(predicted)):
       logger.info(("Predicted", names[predicted[x]], "Data:", x_test[x], "Actual:", names[y_test[x]]))
+      # st.write(("Predicted", names[predicted[x]], "Actual:", names[y_test[x]]))
+
+      # list if prediction right or wrong
+      accuracy = names[predicted[x]] == names[y_test[x]]
+      if not accuracy:
+        st.write(f"accuracy: {accuracy}")
       
       n = model.kneighbors([x_test[x]], 10, True)
       logger.info(f"N: {n}")
+      # st.write(f"N: {n}")
       
 
 
